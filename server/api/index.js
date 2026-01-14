@@ -28,7 +28,6 @@ app.use('/api/message',messageRouter);
 app.use('/api/credit',creditRouter);
 
 
-await connectDB();
 
 // const PORT=process.env.PORT || 3000;
 
