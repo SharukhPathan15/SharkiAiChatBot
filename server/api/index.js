@@ -39,4 +39,10 @@ await connectDB();
 
 
 
-export default app;
+export default async function handler(req, res) {
+  // Make sure DB is connected
+  if (!connectDB.isConnected) {
+    await connectDB();
+  }
+  app(req, res);
+}
