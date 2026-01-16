@@ -28,7 +28,6 @@ app.use('/api/message',messageRouter);
 app.use('/api/credit',creditRouter);
 
 export default async function handler(req, res) {
-  // Make sure DB is connected
   if (!connectDB.isConnected) {
     await connectDB();
   }
