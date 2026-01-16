@@ -27,14 +27,17 @@ app.use('/api/chat',chatRouter);
 app.use('/api/message',messageRouter);
 app.use('/api/credit',creditRouter);
 
-await connectDB();
+export default async function handler(req, res) {
+  // Make sure DB is connected
+  if (!connectDB.isConnected) {
+    await connectDB();
+  }
+  app(req, res);
+}
 
-const PORT=process.env.PORT || 3000;
+// const PORT=process.env.PORT || 3000;
 
 
-app.listen(PORT,()=>{
-  console.log(`Server is running on PORT ${PORT}`);
-})
-
-
-export default app
+// app.listen(PORT,()=>{
+//   console.log(`Server is running on PORT ${PORT}`);
+// })
